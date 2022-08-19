@@ -2,11 +2,20 @@
   "name": "web-watermark",
   "version": "0.0.1",
   "description": "Add watermark to web page.",
-  "main": "index.js",
+  "main": "dist/watermark.js",
   "repository": "https://sikychen.github.com",
   "author": "sikychen",
   "license": "MIT",
   "keywords": [
-    "watermark"
-  ]
+    "watermark",
+    "web-watermark",
+    "javascript"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
 }
