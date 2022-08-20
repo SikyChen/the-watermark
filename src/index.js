@@ -1,12 +1,11 @@
 /**
- * 水印
  * new Watermark({
  *  container: body,
  *  content: 'watermark',
  *  width: 300,
  *  height: 200,
  *  zIndex: 1000,
- *  font: "28px Microsoft Yahei",
+ *  font: "28px auto",
  *  textAlign: 'center',
  *  textBaseline: 'middle',
  *  color: 'rgba(0, 0, 0, 0.2)',
@@ -21,7 +20,7 @@ export class Watermark {
     width: 300,
     height: 200,
     zIndex: 1000,
-    font: "28px Microsoft Yahei",
+    font: "28px auto",
     textAlign: 'center',
     textBaseline: 'middle',
     color: 'rgba(0, 0, 0, 0.2)',
@@ -96,9 +95,9 @@ export class Watermark {
   // 根据配置及 dataUrl 生成一个 style 字符串，用于注入到水印 dom 节点中
   generateStyleString() {
     const { zIndex } = this.config;
-    const { offsetWidth, offsetHeight, offsetTop, offsetLeft } = this.container;
-// TODO 给水印dom设置宽高和 fixed 的位置
-    this.styleString =  `
+
+    this.styleString = 
+    (`
       position: ${this.isFixed ? 'fixed' : 'absolute'};
       top: 0;
       left: 0;
@@ -107,8 +106,8 @@ export class Watermark {
       z-index: ${zIndex};
       pointer-events:none;
       background-repeat:repeat;
-      background-image: url("${this.dataUrl}");
-    `;
+    `)
+    .replaceAll(/[\n]|[\ +]/g, '') + `background-image: url("${this.dataUrl}");`;
   }
 
   // 生成水印 dom 节点，并 append 到容器中

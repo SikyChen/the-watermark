@@ -4,44 +4,63 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Watermark</title>
+  <title>Demo Watermark</title>
   <style>
     body {
       height: 100vh;
       width: 100%;
       margin: 0;
+      font-size: 18px;
     }
     .section {
       margin: 100px;
       width: 600px;
       height: 600px;
+    }
+    .wrap {
+      position: relative;
+      height: 100%;
       overflow: auto;
-      background: wheat;
+      background: #fff2db;
       word-break: break-all;
     }
     .box {
       position: absolute;
-      width: 100px;
-      height: 100px;
+      width: 200px;
+      height: 200px;
       top: 60px;
       left: 60px;
-      background-color: royalblue;
+      background-color: #acbffa;
     }
   </style>
 </head>
 <body>
   <div class="section">
-    <div>watermark's dataUrl: </div>
-    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAAAXNSR0IArs4c6QAAEuRJREFUeF7tnQezLDcRRtuAydlEk7ExyYHiVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAAAXNSR0IArs4c6QAAEuRJREFUeF7tnQezLDcRRtuAydlEk7ExyYHiVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAAAXNSR0IArs4c6QAAEuRJREFUeF7tnQezLDcRRtuAydlEk7ExyYHiVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAAAXNSR0IArs4c6QAAEuRJREFUeF7tnQezLDcRRtuAydlEk7ExyYHiVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAAAXNSR0IArs4c6QAAEuRJREFUeF7tnQezLDcRRtuAydlEk7ExyYHiVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAAAXNSR0IArs4c6QAAEuRJREFUeF7tnQezLDcRRtuAydlEk7ExyYH//yPApog2OZlsMMFkqFNsV3XJs3vv6u5qRrNHVa/sd+/MqHWk95XUarUeCYsEJCCBSQg8MomdmikBCUggFCwHgQQkMA0BBWuartJQCUhAwXIMSEAC0xBQsKbpKg2VgAQULMeABCQwDQEFa5qu0lAJSEDBcgxIQALTEFCwpukqDZWABBQsx4AEJDANAQVrmq7SUAlIQMFyDEhAAtMQULCm6SoNlYAEFCzHgAQkMA0BBWuartJQCUhAwXIMSEAC0xBQsKbpKg2VgAQULMeABCQwDQEFa5qu0lAJSEDBcgxIQALTEFCwpukqDZWABBQsx4AEJDANAQVrmq7SUAlIQMFyDEhAAtMQULCm6SoNlYAEFCzHgAQkMA0BBWuartJQCUhAwXIMSEAC0xBQsKbpKg2VgAQULMeABCQwDQEFa5qu0lAJSEDBcgxIQALTEFCwpukqDZWABBQsx4AEJDANAQVrmq7SUAlIQMFyDEhAAtMQULCm6SoNlYAEFCzHgAQkMA0BBWuartJQCUhAwXIMSEAC0xBQsKbpKg2VgAQULMeABCQwDQEFa5qu0lAJSEDBcgxIQALTEFCwpukqDZWABBQsx4AEJDANAQVrmq7SUAlIQMFyDEhAAtMQULCm6SoNlYAEFCzHgAQkMA0BBWuartJQCUhAwXIMSEAC0xBQsKbpKg2VgAQULMeABCQwDQEFa5qu0lAJSEDBcgxIQALTEFCwpukqDb0igbdExD8i4r/3qOMDEfHGiPjVPZ71kQsTULAuDNTPTUfggxHxyYh4OSJ+ccL6N0fEpyLi3RHxUkS8Ol1Ld2CwgrWDTrQJ3QQ+HRGPlbe/HRF/XfjaGyLi2cPMil+/EBH/6q7VF7sJKFjd6HxxBwSYLX2utONvEYFo/adp2zsj4vOHn/HMN3fQ9imboGBN2W0afUECLAdZFmb5ZUT8vPn+hyLiE4ef/SYifnLB+v3UGQQUrDNg+eguCeBA/1JE4KPK8p2I+Ev5+2ci4v2Hv/8wIn6/SxITNErBmqCTNPHqBN4VEU+dWBo+UwTtGxHx96tbZAWLBBQsB4YE/k/g4xHx4QKDsIWfRcSbIuK5w8//HRHPC2w9AgrWeuyteX0CjP/3HJZ/iBFLQ2Kysnw3ItghTMc8MyuWhOwk3idma/0W7swCBWtnHWpz7k0An9UXDzOoP0bE9yKi7gbyIQTqD83Mi58jbq9EBO/96fD3e1fsg/0EFKx+dr45LwHGPWEK7yhN+FFE/C4iPhYRHzmzaQSRImz8V//WmfDOeVzBOoeWz85OgPH+9oh4NCKeKI1hxkQoAyELLAGZeb11obHEYC39vD7KM4gXkfNtPNfs/Fa3X8FavQs0YBCBt0UE4Qn899cRQWwVhRCFHzfiwszrC41df44IfFr4uN4bEe9rZmj5OBHw+Lk8unOFjlWwrgDVT26OACLz9IJViMvXjzjQH4+Ij5Z30s9VP4MfDKc94kVoxG8PO4vM2CxXIKBgXQGqn9wkgfbcIEYiMMyulgr/NlgaMiPLgmMe4VoqBKAqVFfuegXryoD9/GYIEE/15cOuYBp1SrB4Bn8XopWFGRmBowrTSt2qYK0E3mqvSgDH+ZLDm+Xbk6VmhIcl4SnnOMtClodZ2ElkR9GyAgEFawXoVnkVAuz8EamOKOVOHtHq/PlnqZGcViThy8LuIAeejxX+jeCAZ7aVpT1reJUG+dHXE1CwHBV7IIBQcbRmqbCMI2UMGUUp+JpwwLNEzPKtiHjtBAj8WETBMyPD50XQqGUFAgrWCtCt8mIEWPoxY8pMCsc+TGwUs6L0PbV5sDhqw+9PHbchlIEMDnW2drGG+KH7EVCw7sfJp7ZJoM1lRUwVPiaEiYh1Qg2ytL6n9l3SIxPsadkwAQVrw52jaScJtClhyKxQL4Zg9kVamLr0q2EJS3mwjqVItis2QkDB2khHaMbZBOqZv3b2hBiRIbTma6cC/FmkN8587Et5sPBnmYnh7O4Y84KCNYaztVyeAIeXya5AIWUx5wAp7OZxTrBmEK21s2zk6EyWNg/WTw9Hdy5vsV98MAEF68EI/cBKBIinIoSB8v3DgePWmU7qF3b1eLYeWv5B2elj6Zh5sPBh8ccZ1kqdele1CtZdhPz9WgQYm8ySWN6RsqWNLicFDGcEcZazc9cGhfJz4qsQn7x7MNvCt1ga5o5fxlgtXfG1Vvutd4GAguWw2CIBBIbo8uowJ8MCs5+l+wDb2Kr2oggOJ3+2aSgpYJiZWSYioGBN1Fk3YirO8kz90jaZeCpSvLSiVQNHWx8V31hKysc3cLAbVzXRwFKwJuqsGzD1VMR6Np+8VC82fqaaiaE64HmHZSXhDRR+x7Ecln6EQXiIebJBpWBN1mE7NxfnN8dgEBJiqpgtsSxEkKrTvD3/V3cMSf/CkpBv8A4XSOSOIQed+bmZQCcdSArWpB23E7PZoUNUWJ4hInmdVnu4GMFBzPBVZann/9qMCnwPR33N2X7XIeedIN13MxSsfffvVluHACEyNWsCMx8ECT8VO3ht4SxfzcNez/8dyyia31CstjoSzrRLwToTmI8/mADiQrqWugNYP8rMiCR5S6XNGlrP/7UxWLxfL5d4sOF+YH0CCtb6fXBrFqSf6lS7caoT9NmWu1LD8HvisZjBMVPzzsCdjS4Fa2cdutHm4KtiB5D0LHmLMv+fyfUIYyBWKgtiw0Hk+2QNJY8VzxqdvtHOv6RZCtYlafqtJQKc9+N6rXq2D7FiFpWCxDjkmSpaRKnje1oqbdZQAkpZHlp2TkDB2nkHr9w8xhcXP+C3qqWNleJ3S+lejqUibp+96zKJlTFY/aUIKFiXIul3kgDixDk/zucRlc5/iZOqhQPJiExb2nQvOOAJX1haGvIsx234FsdsLDdAQMG6gU4e2MR25pPLuvZozNKlpGlmm+4FPxdR6Uvl2O04A5tsVSMJKFgjae+/LvxQbX51Yqq4AIL7/Wq0+rGdwJruJYkxU+NIjuXGCShYNz4ALtB84qk4sEzWTwQr46tePTjCcbBTiDon/ioLIsZyb+k8H476uow8tTS8QBP8xCwEFKxZemqbdhLzhEixFOQ4TIoVSz5St7ShBqSMIcI9C1lCccAvlbqMRNReOoRFbJOEVg0hoGANwbzbSnCuIyxtOba7x3gjcLQuDREiZmNtYWnIMpLZFY5108Dsdhjdv2EK1v1Z+eTrCTB+WLrVQ8Y8RVaEYwLDriFClIWZGUdxlpaGzNiWEvbZFzdKQMG60Y6/YLOZLRFrVctdTvI2u0J7680FzfNTeyKgYO2pN6/XFsYJ8VWZTaGdDbWJ906FLWAl38MBn7nU+Vm9M/B6LfHLUxNQsKbuvqsbv5QGhko5VExsVF7awDh6qly7xTN5k80xI0nUhz8ry1Jq46s30ArmIqBgzdVfI60lnoodwFOFiyEQLnYD25xUzMLwTZ3yQaXT3rsAR/bsxHUpWBN33hVNb6/FoiriqRCmvLw0q6+R6O17r0QEdwAeK3mVFzuBFgncSUDBuhPRzT1QL22g8SzVyISQosJSjuVfTcBXZ0j8jnN+WeqlpTcH0wZfloCCdVmeW/4aKYYJNcjI82O21mu2lpznOMpZKtZYqrrLt7Q0rJeWbpmRtm2cgIK18Q66kHnMhp4++JOOZT/IqghRSDGqQZ2MFXxORKtnwT/1o4hA2BCqnIWRq52cVVm8tPRCHXnrn1GwbmMEkIYlk+NVnxN50B89nANMEghb5q/KeCqWgeRTr2EILBVZCpL6hWj3xyLi+YKTzKJ8n4IvC2Hzeq3bGG9Xa6WCdTW0m/nwUhI9Qg44B5i31rBkIy0xhfiojFzHd4WjvR6/YfePozKIUJtZgV3BnGXhCyMKnqyhiJtFAg8moGA9GOEUH2gzJbRG14ydTx7EbKlhLO04rJzHbpidPVsebI/kML7MtT7FEJnDSAVrjn66hJVtYrz8JrMoEu2lsLC0Y/lXC7MqhKqdKbXHcr6qQF2iq/zGMQIK1m2MDWKnEKE2t/pSwCZjglnTsbCFSqwm7DNS/TbG0qqtVLBWxT+k8vYITK30WKaEpVkW4sbSEcc5znd2DOstN9V/NaRhVnJ7BBSs2+jznAnhWCcOC0HKcuzGmTbZHs+zNORPvbKLnx+7VOI26NrKYQQUrGGoh1bUXs7A8o5jM4Q04KsiHxUzryzHMiXUINJjDbjrkPPQhlvZvgkoWPvpX3bsSPNCuEIGfiJQebtybWm7TDyVRI8dRm5mrpdLMMtiZrb07f0QtSWbI6Bgba5Lugxq81G1fiqucufSh1rOTaJHLiyWgoib6Yq7usmXHkpAwXoowXXfZ+nHEZj2aq3WKnxX5FmvifeWkujl8o7ZGktIr39ft3+tvSGgYM09JD55EJZsBaEFHERGmIhOr1kTltIQt0tD3uMmG8SKGZV5quYeH7uzXsGat0vba91JpIdPKQuzr2eaeKol5/qp5SQCRvS6ZwDnHSe7slzBmrc767197eyJ2RE7fDV8gZbif+LcYM0Cyhgg7KHGVPEsV28RrtD6vuYlpuXTE1Cw5ulCdutwdqeAcLA4s39ybIalHIWgzicWYqXqsvGHTbOZjbEMRLSI0+Jgs1fDzzM2bsZSBWv7XU0fsaPHnypM9ZByOstJ50JalyxcFsEsiWdrwj2zgG6/37VwgYCCtf1hUWdSNQMoR2M4G8hOHjMv4q8Qpiz1UHObax3flFlAt9/3WtgQULC2PyQ4tFx9UV9bcILjsyLxXh5YZslXMyuw1COJXy1mAd1+32uhgjXdGGiXeS8e7gWsDak7fUtZE6qDPt/D8U66ZINApxsSt2uwM6zt9D19QVxUXk6alvHz5w5xUfyM3FVk8aylzsKqn4tn6i04/I4so9RBGER7g/N2aGiJBBYIKFjbGBY4xBEddgLbeCosrAGirx1mRtXy1s/FkhAx4rs44TO7AjFV/Ny4qm30u1acSUDBOhPYFR7H//SV5rv1RmV+1QaJtqmI23OBLPfIrZ652fkGszJmZxYJTEtAwdpG19WLH9IinOLMlJgNtVlAW6d6exdg2yrFahv9rBUPJKBgPRDghV5fuhqeTxPESYwVjvGak33pXGDrnOd9ln+IVQaVXshcPyOBdQgoWGO5MxPCn0RAZy319hki2ZlVZaAnf+dCU0IW8FWlENU7APNbLC+Jx6IOMjRQj471sX1sbVckoGBdEW7z6XobcruTx6P14lGCOnG0Z7YFRIeZFrFUGWtFjqt2R3Fca6xJAisQULDGQF+6YovMCizXlq7X4pZk4qnIdVWDRhEuZlGUpd3EMa2xFgmsREDBGgMekWHG1Cbaq451Zk7EW1HqEZx2BzAtZrlHEKlFAjdDQMEa29VLzvXqWK8Hml8oaWAQOlLAtAU/lj6qsX1obSsSULDGwyc2Cl9UvSorHeukhklhaq/Owp9F2phcEuJUZ4bl0ZrxfWiNKxFQsNYBz/KPyHZ29LIwU8J3hShRSKDH7mAt7BwyC8O/9bLXwq/Teda6HgEFaz321EyKGA4mHyt1WbiupdYugQ0QULDW74R2qVct8kbl9ftHCzZEQMHaRmcQOIpfK1Mep1XuBG6jf7RiIwQUrI10xOG84OOHZWJaRawW8VYWCUjg8I9EENsigCMe4UKo2iM827JUayQwmIAzrMHArU4CEugnoGD1s/NNCUhgMAEFazBwq5OABPoJKFj97HxTAhIYTEDBGgzc6iQggX4CClY/O9+UgAQGE1CwBgO3OglIoJ+AgtXPzjclIIHBBBSswcCtTgIS6CegYPWz800JSGAwAQVrMHCrk4AE+gkoWP3sfFMCEhhMQMEaDNzqJCCBfgIKVj8735SABAYTULAGA7c6CUign4CC1c/ONyUggcEEFKzBwK1OAhLoJ6Bg9bPzTQlIYDABBWswcKuTgAT6CShY/ex8UwISGExAwRoM3OokIIF+AgpWPzvflIAEBhNQsAYDtzoJSKCfgILVz843JSCBwQQUrMHArU4CEugnoGD1s/NNCUhgMAEFazBwq5OABPoJKFj97HxTAhIYTEDBGgzc6iQggX4CClY/O9+UgAQGE1CwBgO3OglIoJ+AgtXPzjclIIHBBBSswcCtTgIS6CegYPWz800JSGAwAQVrMHCrk4AE+gkoWP3sfFMCEhhMQMEaDNzqJCCBfgIKVj8735SABAYTULAGA7c6CUign4CC1c/ONyUggcEEFKzBwK1OAhLoJ6Bg9bPzTQlIYDABBWswcKuTgAT6CShY/ex8UwISGExAwRoM3OokIIF+AgpWPzvflIAEBhNQsAYDtzoJSKCfgILVz843JSCBwQQUrMHArU4CEugnoGD1s/NNCUhgMAEFazBwq5OABPoJKFj97HxTAhIYTEDBGgzc6iQggX4CClY/O9+UgAQGE1CwBgO3OglIoJ/A/wCheHbngNfYXAAAAABJRU5ErkJggg==
-    <div class="box"></div>
+    <div class="wrap">
+      <code class="main"></code>
+      <div class="box"></div>
+    </div>
   </div>
-  <script src="./../lib/watermark.js"></script>
   <script>
-    window.onload = () => {
-      window.wm = new Watermark({
-        container: document.querySelector('.section'),
-      });
+    let w = 'web-watermark', wa = [];
+    for(let k = 0; k < 100; k++) {
+      for(let i = 0; i < w.length; i++) {
+        wa.push(w[i].charCodeAt().toString(2));
+      }
     }
+    document.querySelector('.main').innerHTML = wa.join('');
+  </script>
+
+  <script src="./../lib/watermark-plugin.js"></script>
+  <script>
+    // Mount to body
+    window.wm = new Watermark();
+
+    // Mount to specified DOM element
+    window.wm2 = new Watermark({
+      container: document.querySelector('.section'),
+      content: 'box',
+    });
   </script>
 </body>
 </html>

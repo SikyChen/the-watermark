@@ -4,10 +4,9 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'lib'),
-    filename: 'watermark.js',
+    filename: 'watermark-plugin.js',
     library: {
       type: 'umd',
     },
   },
-  watch: true,
 };
