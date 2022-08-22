@@ -1,3 +1,5 @@
+import { getWatermarkByContainer, isConfigEqual } from "./utils";
+
 /**
  * new Watermark({
  *  container: body,
@@ -12,7 +14,7 @@
  *  rotate: -34,
  * })
  */
-export class Watermark {
+export default class Watermark {
 
   config = {
     container: null,
@@ -39,28 +41,44 @@ export class Watermark {
       ...this.config,
       ...config,
     }
-    this.container = this.config.container;
 
-    this.setContainer();
+    this.setContainer(this.config.container);
+
+    try {
+      if (
+        this.container._watermarkInstance &&
+        isConfigEqual(this.container._watermarkInstance.config, this.config)
+      ) {
+        return this.container._watermarkInstance;
+      } else {
+        this.container._watermarkInstance = this;
+      }
+    } catch (error) {
+      console.log('Please enter the correct configs.', error);
+    }
+
+    this.init();
+  }
+
+  // 设置水印容器
+  setContainer(container) {
+    if (container) {
+      this.container = container;
+      if (!['absolute', 'relative', 'fixed'].includes(this.container.style.position)) {
+        this.container.style.position = 'relative';
+      }
+    }
+    else {
+      this.container = document.querySelector('body');
+      this.isFixed = true;
+    }
+  }
+
+  init() {
     this.generateDataUrl();
     this.generateStyleString();
     this.generateWatermark();
     this.observerContainer();
-  }
-
-  // 设置水印容器
-  setContainer() {
-    if (!this.container) {
-      this.container = document.querySelector('body');
-      this.isFixed = true;
-    }
-
-    if (
-      !this.isFixed &&
-      !['absolute', 'relative', 'fixed'].includes(this.container.style.position)
-    ) {
-      this.container.style.position = 'relative';
-    }
   }
 
   // 使用 canvas 生成水印图片，并转为 dataUrl
@@ -129,10 +147,10 @@ export class Watermark {
     if (MutationObserver) {
       this.observer = new MutationObserver(
         () => {
-          const _watermark = document.querySelector('._watermark');
+          const _watermark = getWatermarkByContainer(this.container);
           if (
             !_watermark ||
-            _watermark && _watermark.getAttribute('style') !== styleString
+            _watermark && _watermark.getAttribute('style') !== this.styleString
           ) {
             this.hidden();
             const newWm = new Watermark(this.config);
@@ -154,10 +172,13 @@ export class Watermark {
     }
   }
 
-  // 移除水印
+  /**
+   * 移除水印
+   */
   hidden() {
     this.observer && this.observer.disconnect();
     this.observer = null;
     this.wm && this.wm.remove && this.wm.remove();
+    this.container._watermarkInstance = null;
   }
 }

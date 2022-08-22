@@ -2,7 +2,7 @@
   "name": "the-watermark",
   "version": "0.0.1",
   "description": "Add watermark to web page.",
-  "main": "dist/the-watermark.js",
+  "main": "index.js",
   "repository": "https://github.com/SikyChen/the-watermark",
   "author": "sikychen",
   "license": "MIT",

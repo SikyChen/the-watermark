@@ -35,6 +35,9 @@
   </style>
 </head>
 <body>
+  <div>
+    <button onclick="refresh()">刷新水印</button>
+  </div>
   <div class="section">
     <div class="wrap">
       <code class="main"></code>
@@ -53,6 +56,11 @@
 
   <script src="./../lib/the-watermark.js"></script>
   <script>
+    function refresh() {
+      console.log('refresh');
+      window.wm = new Watermark();
+    }
+
     // Mount to body
     window.wm = new Watermark();
 
