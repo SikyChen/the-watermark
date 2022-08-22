@@ -42,7 +42,7 @@
     </div>
   </div>
   <script>
-    let w = 'web-watermark', wa = [];
+    let w = 'the-watermark', wa = [];
     for(let k = 0; k < 100; k++) {
       for(let i = 0; i < w.length; i++) {
         wa.push(w[i].charCodeAt().toString(2));
@@ -51,7 +51,7 @@
     document.querySelector('.main').innerHTML = wa.join('');
   </script>
 
-  <script src="./../lib/watermark-plugin.js"></script>
+  <script src="./../lib/the-watermark.js"></script>
   <script>
     // Mount to body
     window.wm = new Watermark();

@@ -1,4 +1,4 @@
-# watermark-plugin
+# the-watermark
 
 在网页中添加水印。
 
@@ -7,7 +7,7 @@
 ## 使用
 
 ``` html
-<script src="./lib/watermark-plugin.js"></script>
+<script src="./lib/the-watermark.js"></script>
 
 <script>
   new Watermark();
@@ -15,11 +15,11 @@
 ```
 
 ``` javascript
-import Watermark from "watermark-plugin";
+import Watermark from "the-watermark";
 
 new Watermark({
   container: document.querySelector('.section'),
-  content: 'watermark-plugin',
+  content: 'the-watermark',
 });
 ```
 
