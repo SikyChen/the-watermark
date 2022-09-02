@@ -1,6 +1,6 @@
 {
   "name": "the-watermark",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Add watermark to web page.",
   "main": "index.js",
   "repository": "https://github.com/SikyChen/the-watermark",

@@ -10,7 +10,7 @@ import { getWatermarkByContainer, isConfigEqual } from "./utils";
  *  font: "28px auto",
  *  textAlign: 'center',
  *  textBaseline: 'middle',
- *  color: 'rgba(0, 0, 0, 0.2)',
+ *  color: 'rgba(200, 200, 200, 0.2)',
  *  rotate: -34,
  * })
  */
@@ -25,7 +25,7 @@ export default class Watermark {
     font: "28px auto",
     textAlign: 'center',
     textBaseline: 'middle',
-    color: 'rgba(0, 0, 0, 0.2)',
+    color: 'rgba(200, 200, 200, 0.2)',
     rotate: -34,
   }
 
