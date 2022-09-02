@@ -1,5 +1,7 @@
 # the-watermark
 
+[![NPM](https://img.shields.io/npm/v/the-watermark.svg)](https://www.npmjs.com/package/the-watermark) 
+
 在网页中添加水印。
 
 基本原理是通过 canvas 生成一张水印图片并转为 dataUrl ，通过 background-image 的方式挂到水印 dom 元素上。最后 append 到指定的容器中。
@@ -35,5 +37,5 @@ new Watermark({
 | font          | 同 canvas 用法的 font，控制水印文本的文字样式 | string | "28px auto" |
 | textAlign     | 同 canvas 用法的 textAlign，控制文本显示位置， | string | "center" |
 | textBaseline  | 同 canvas 用法的 textBaseline，控制文本显示位置 | string | "middle" |
-| color         | 同 canvas 用法的 color，控制文本颜色和透明度 | string | "rgba(0, 0, 0, 0.2)" |
+| color         | 同 canvas 用法的 color，控制文本颜色和透明度 | string | "rgba(200, 200, 200, 0.2)" |
 | rotate        | 文本旋转角度 | number | -34 |
